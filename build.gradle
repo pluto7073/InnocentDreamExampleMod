@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+group = project.maven_group
+version = project.mod_version
+archivesBaseName = project.archives_base_name
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "https://innocent-dream.web.app/cdn/maven"
+        name = "InnocentDream"
+    }
+    maven {
+        url = "https://maven.scijava.org/content/repositories/public/"
+        name = "scijava"
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation "io.innocentdream:innocentdream:${project.id_version}"
+}
+
+test {
+    useJUnitPlatform()
+}
